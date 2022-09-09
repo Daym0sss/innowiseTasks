@@ -136,5 +136,5 @@
         }
     }
 
-    $task=Task5::fib(60);
+    $task=Task5::main(5);
     echo $task;
