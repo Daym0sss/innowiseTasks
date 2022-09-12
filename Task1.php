@@ -32,7 +32,3 @@ namespace src;
             }
         }
     }
-
-    $task=Task1::main(2);
-    echo $task;
-?>
