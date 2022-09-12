@@ -64,7 +64,3 @@ class Task4
         }
     }
 }
-
-$task=Task4::main("The quick-brown_fox jumps over the_lazy-dog");
-echo $task;
-?>
