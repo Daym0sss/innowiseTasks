@@ -1,42 +1,35 @@
 <?php
+
 namespace src;
 
 class Task3
 {
-    static function check($number) : ?int
+    public function check(int $number): int
     {
-        if (is_int($number))
-        {
-            while(strlen($number)>1)
-            {
-                $digits=str_split($number);
-                $number=0;
-                foreach ($digits as $digit)
-                {
-                    $number+=$digit;
+        if (is_int($number)) {
+            while (strlen($number) > 1) {
+                $digits = str_split($number);
+                $number = 0;
+                foreach ($digits as $digit) {
+                    $number += $digit;
                 }
             }
+
             return $number;
-        }
-        else
-        {
+        } else {
             throw new \InvalidArgumentException('Выброшено исключение: введённое значение должно быть целым числом');
         }
     }
 
-    static function main($number) : ?int
+    public function main(int $number): int
     {
-        $result=null;
-        try
-        {
-            $result=Task3::check($number);
-        }
-        catch (\Exception $e)
-        {
+        $result = null;
+
+        try {
+            $result = $this->check($number);
+        } catch (\Exception $e) {
             echo $e->getMessage();
-        }
-        finally
-        {
+        } finally {
             return $result;
         }
     }
