@@ -3,7 +3,7 @@ namespace src;
 
     class Task1
     {
-        static function check($number) : ?string
+        public function check(int $number) : string
         {
             if (is_int($number))
             {
@@ -15,12 +15,12 @@ namespace src;
             }
         }
 
-        static function main($number) : ?string
+        public function main(int $number) : string
         {
             $result=null;
             try
             {
-                $result=Task1::check($number);
+                $result=$this->check($number);
             }
             catch (\Exception $e)
             {
