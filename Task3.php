@@ -41,6 +41,3 @@ class Task3
         }
     }
 }
-
-$task=Task3::main(5689);
-echo $task;
