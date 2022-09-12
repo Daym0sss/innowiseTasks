@@ -1,60 +1,49 @@
 <?php
- namespace src;
 
- class Task8
- {
-     static function getProperties($key,$obj,&$result): void
-     {
-         if (is_object($obj))
-         {
-            $properties=get_mangled_object_vars($obj);
-            foreach ($properties as $key=>$value)
-            {
-                if (is_object($value))
-                {
-                    self::getProperties($key,$value,$result);
-                }
-                else
-                {
-                    if (strlen($result)!=0)
-                    {
-                        $result.="<br>";
+namespace src;
+
+class Task8
+{
+    public function getProperties(object $obj, string &$result): void
+    {
+        if (is_object($obj)) {
+            $properties = get_mangled_object_vars($obj);
+            foreach ($properties as $key => $value) {
+                if (is_object($value)) {
+                    $this->getProperties($value, $result);
+                } else {
+                    if (strlen($result) != 0) {
+                        $result .= '<br>';
                     }
-                    $result.=$key . " " . $value;
+                    $result .= $key . ': ' . $value;
                 }
             }
-         }
-     }
+        }
+    }
 
-     static function check($json) :?string
-     {
-         $result="";
-         if (json_decode($json)==null)
-         {
-             throw new \InvalidArgumentException("Введённые данные должны быть стокой формата json");
-         }
-         else
-         {
-             $obj=json_decode($json);
-             Task8::getProperties(get_mangled_object_vars($obj),$obj,$result);
-         }
-         return $result;
-     }
+    public function check(string $json): string
+    {
+        $result = '';
+        if (json_decode($json) == null) {
+            throw new \InvalidArgumentException('Введённые данные должны быть стокой формата json');
+        } else {
+            $obj = json_decode($json);
+            $this->getProperties($obj, $result);
+        }
 
-     static function main($json) : ?string
-     {
-         $result=null;
-         try
-         {
-             $result=Task8::check($json);
-         }
-         catch (\Exception $e)
-         {
-             echo $e->getMessage();
-         }
-         finally
-         {
-             return $result;
-         }
-     }
- }
+        return $result;
+    }
+
+    public function main(string $json): string
+    {
+        $result = null;
+
+        try {
+            $result = $this->check($json);
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        } finally {
+            return $result;
+        }
+    }
+}
