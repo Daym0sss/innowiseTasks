@@ -138,6 +138,3 @@
             }
         }
     }
-
-    $task=new Task12(12,3);
-    echo $task->multiply()->addBy(36)->subtractBy(3)->multiplyBy(2)->divideBy(0);
