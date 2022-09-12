@@ -46,17 +46,3 @@ class Task9
         }
     }
 }
-
-    $arr=array();
-    array_push($arr,1);
-    array_push($arr,2);
-    array_push($arr,3);
-    array_push($arr,1);
-    array_push($arr,2);
-    array_push($arr,3);
-
-    $n=6;
-    $task=Task9::main($arr,$n);
-    echo "<pre>";
-    print_r($task);
-    echo "</pre>";
