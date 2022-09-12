@@ -136,5 +136,4 @@
         }
     }
 
-    $task=Task5::main(5);
-    echo $task;
+
