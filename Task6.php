@@ -61,6 +61,3 @@
          }
      }
  }
-
- $task=Task6::main(2,2010,5,2020);
- echo $task;
