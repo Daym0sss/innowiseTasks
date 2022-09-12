@@ -47,8 +47,3 @@ class Task10
     }
 
 }
-
-$task=Task10::main(21);
-echo '<pre>';
-print_r($task);
-echo '</pre>';
