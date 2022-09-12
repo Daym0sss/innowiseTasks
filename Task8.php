@@ -58,15 +58,3 @@
          }
      }
  }
-
- $string='{
-"Title": "The Cuckoos Calling",
-"Author": "Robert Galbraith",
-"Detail": {
-"Publisher": "Little Brown"
-}
-}
-';
-
- $task=Task8::main($string);
- echo $task;
