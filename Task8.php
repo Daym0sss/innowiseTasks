@@ -13,7 +13,7 @@ class Task8
                     $this->getProperties($value, $result);
                 } else {
                     if (strlen($result) != 0) {
-                        $result .= '<br>';
+                        $result .= '\r\n';
                     }
                     $result .= $key . ': ' . $value;
                 }
@@ -24,7 +24,7 @@ class Task8
     public function check(string $json): string
     {
         $result = '';
-        if (json_decode($json) == null) {
+        if (!is_object(json_decode($json))) {
             throw new \InvalidArgumentException('Введённые данные должны быть стокой формата json');
         } else {
             $obj = json_decode($json);
@@ -36,7 +36,7 @@ class Task8
 
     public function main(string $json): string
     {
-        $result = null;
+        $result = '';
 
         try {
             $result = $this->check($json);
