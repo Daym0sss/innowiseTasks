@@ -39,7 +39,7 @@ class Task6
 
     public function main(int $year, int $lastYear, int $month, int $lastMonth, string $day = 'Monday'): int
     {
-        $result = null;
+        $result = 0;
 
         try {
             $result = $this->check($year, $lastYear, $month, $lastMonth, $day);
