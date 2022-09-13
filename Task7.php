@@ -19,7 +19,7 @@ class Task7
 
     public function main(array $arr, int $n): array
     {
-        $result = null;
+        $result = [];
 
         try {
             $result = $this->check($arr, $n);
