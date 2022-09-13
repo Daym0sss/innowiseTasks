@@ -13,22 +13,34 @@ class Task9
             throw new \InvalidArgumentException('Первый параметр должен быть массивом длины от 3 и более');
         } elseif (!is_int($n)) {
             throw new \InvalidArgumentException('Второй параметр должен быть целым числом');
+        } elseif ($n <= 0) {
+            throw new \InvalidArgumentException('Второй параметр должен быть целым числом больше 0');
         } else {
-            $i = 0;
-            while ($i <= count($arr) - 3) {
-                if ($arr[$i] + $arr[$i + 1] + $arr[$i + 2] == $n) {
-                    array_push($result, $arr[$i] . ' + ' . $arr[$i + 1] . ' + ' . $arr[$i + 2] . ' = ' . $n);
+            $negative = false;
+            foreach ($arr as $num) {
+                if ($num < 0) {
+                    $negative = true;
                 }
-                $i++;
             }
+            if ($negative) {
+                throw new \InvalidArgumentException('В массиве не должно быть отрицательных чисел');
+            } else {
+                $i = 0;
+                while ($i <= count($arr) - 3) {
+                    if ($arr[$i] + $arr[$i + 1] + $arr[$i + 2] == $n) {
+                        array_push($result, $arr[$i] . ' + ' . $arr[$i + 1] . ' + ' . $arr[$i + 2] . ' = ' . $n);
+                    }
+                    $i++;
+                }
 
-            return $result;
+                return $result;
+            }
         }
     }
 
     public function main(array $arr, int $n): array
     {
-        $result = null;
+        $result = [];
 
         try {
             $result = $this->check($arr, $n);
