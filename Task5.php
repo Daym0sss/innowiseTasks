@@ -59,13 +59,17 @@ class Task5
         }
     }
 
-    public function fib(int $i): string
+    public function fib(int $n): string
     {
-        if ($i <= 1) {
-            return $i;
-        } else {
-            return $this->add($this->fib($i - 1), $this->fib($i - 2));
+        $prev = 0;
+        $next = 1;
+        for ($i = 0;$i < $n;$i++) {
+            $temp = $next;
+            $next = $this->add($prev, $next);
+            $prev = $temp;
         }
+
+        return $prev;
     }
 
     public function count(int $n): string
@@ -84,7 +88,7 @@ class Task5
     {
         if (is_int($n)) {
             if ($n <= 0) {
-                throw new \InvalidArgumentException('Должно быть введено целое число большее 1');
+                throw new \InvalidArgumentException('Должно быть введено целое положительное число');
             } else {
                 return $this->count($n);
             }
@@ -95,7 +99,7 @@ class Task5
 
     public function main(int $n): string
     {
-        $result = null;
+        $result = '';
 
         try {
             $result = $this->check($n);
