@@ -15,7 +15,7 @@ class Task6
             } else {
                 if ($month < 0 or $month > 12 or $lastMonth < 0 or $lastMonth > 12) {
                     throw new \InvalidArgumentException('Месяц должен быть числом от 1 до 12');
-                } elseif ($year < 0) {
+                } elseif ($year < 0 or $lastYear < 0) {
                     throw new \InvalidArgumentException('Год должен быть больше 0');
                 } elseif (strtotime($year . '-' . $month . '-01') > strtotime($lastYear . '-' . $lastMonth . '-01')) {
                     throw new \InvalidArgumentException('Начальная дата должна быть раньше конечной');
